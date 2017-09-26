@@ -17,5 +17,5 @@ if(true)                                  //For debugging only
     $action = 'home';
   }
 
-  require_once('views\layout.php');                           
+  require_once('views/layout.php');                           
 ?>
