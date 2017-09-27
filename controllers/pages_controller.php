@@ -3,11 +3,11 @@
     public function home() {
       $first_name = "Jon";
       $last_name = "Snow";
-      require_once('views\pages\home.php');
+      require_once('views/pages/home.php');
     }
 
     public function error() {
-      require_once realpath($_SERVER["DOCUMENT_ROOT"]) .'views\pages\error.php';
+      require_once realpath($_SERVER["DOCUMENT_ROOT"]) .'views/pages/error.php';
     }
   }
 ?>
