@@ -4,8 +4,9 @@
   </head>
   <body>
     <header>
-      <a href="/RGBbuddies">Home</a>
+      <a href="index.php">Home</a>
       <a href = '?controller=posts&action=index'>Posts</a>
+      <a href = '?controller=user&action=index'>Register</a>
     </header>
 
     <?php require_once("routes.php");

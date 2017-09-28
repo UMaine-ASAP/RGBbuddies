@@ -7,12 +7,15 @@
     switch($controller) {
       case 'pages':
         $controller = new PagesController();
-      break;
+        break;
       case 'posts':
         //we need the model to query the database later in the controller
         require_once('models/post.php');
         $controller = new PostsController();
-      break;
+        break;
+      case 'user':
+        $controller = new UserController();
+        break;
     }
 
     //call the action
@@ -21,8 +24,9 @@
 
   //just a list of the controllers we have and their actions
   //we consider these "allowed" values
-  $controllers = array('pages' => ['home', 'error'],
-                       'posts' => ['index', 'show']);
+  $controllers = array('pages' => ['home', 'error', 'profile'],
+                       'posts' => ['index', 'show'],
+                       'user' => ['index', 'register']);
 
   //check that the requested controller and action are both allowed
   //if someone tries to access something else he will be redirected to the error action of the pages
