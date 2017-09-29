@@ -28,7 +28,8 @@ class UserController {
         case 2: // user already exists with email
           $out = $outcome[1]; //TODO: add forgot password function after failed login attempt
       }
-
+      User::login($email, $password);
+      header('Location: index.php');
     }
   }
 
