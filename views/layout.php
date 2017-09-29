@@ -5,8 +5,7 @@
   <body>
     <header>
       <a href="index.php">Home</a>
-      <a href = '?controller=posts&action=index'>Posts</a>
-      <a href = '?controller=user&action=index'>Register</a>
+      <a href = '?controller=user&action=login'>Login/Sign Up</a>
     </header>
 
     <?php require_once("routes.php");

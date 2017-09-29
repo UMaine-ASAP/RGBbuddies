@@ -25,8 +25,7 @@
   //just a list of the controllers we have and their actions
   //we consider these "allowed" values
   $controllers = array('pages' => ['home', 'error', 'profile'],
-                       'posts' => ['index', 'show'],
-                       'user' => ['index', 'register']);
+                       'user' => ['login', 'register']);
 
   //check that the requested controller and action are both allowed
   //if someone tries to access something else he will be redirected to the error action of the pages

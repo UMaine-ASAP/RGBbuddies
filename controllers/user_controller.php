@@ -10,6 +10,7 @@ class UserController {
 
 ///////////////////////////////////////////////////////////////////////// REGISTER
   function register() {
+    require_once('views/user/userRegistration.php');
 
     if (isset($_POST['firstName'])) {
       $out = '';
@@ -33,13 +34,27 @@ class UserController {
 
 ///////////////////////////////////////////////////////////////////////// LOGIN
   function login() {
+    require_once('views/user/userLogin.php');
 
     if (isset($_POST['email'])) {
-      $email = clean($_POST['email']);
-      $email = clean($_POST['password']);
+      $email = $this->clean($_POST['email']);
+      $password = $this->clean($_POST['password']);
 
       $outcome = User::login($email, $password);
-      if ($outcome[0] !-)
+      if ($outcome[0] != 1) {
+        $_SESSION['message'] = $outcome[1];
+        header('Location: index.php');
+      }
+      else {
+        $userData = $outcome[1];
+        $_SESSION['email'] = $userData[0];
+        $_SESSION['firstName'] = $userData[1];
+        $_SESSION['lastName'] = $userData[2];
+        $_SESSION['favColor'] = $userData[3];
+        $_SESSION['token'] = $userData[4];
+        header('Location: index.php');
+
+      }
     }
   }
 

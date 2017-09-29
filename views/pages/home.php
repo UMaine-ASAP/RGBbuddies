@@ -1,3 +1,9 @@
-<p>Hello there <?php echo $first_name . ' ' . $last_name; ?>!</p>
+<p>Email:<br>
+ <?php echo $_SESSION["email"]; ?></p>
+<p>First Name:<br>
+  <?php echo $_SESSION["firstName"]; ?></p>
+<p>Last Name:<br>
+  <?php echo $_SESSION["lastName"]; ?></p>
+<?php echo $_SESSION['message']; ?>
 
 <p>You successfully landed on the home page. Congrats!</p>

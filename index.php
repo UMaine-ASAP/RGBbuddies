@@ -6,6 +6,7 @@ if(true)                                  //For debugging only
   ini_set('display_startup_errors',1);
   error_reporting(E_ALL);
 }
+  session_start();
   require_once('connection.php');
 
   if (isset($_GET['controller']) && isset($_GET['action'])) {
@@ -17,5 +18,5 @@ if(true)                                  //For debugging only
     $action = 'home';
   }
 
-  require_once('views/layout.php');                           
+  require_once('views/layout.php');
 ?>

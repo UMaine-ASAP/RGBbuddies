@@ -67,17 +67,20 @@ Class User {
        if(password_verify($password, $hash)) {
          $characters = "0123456789QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm";
          $token = '';
-         for ($i = 0; $i < 20; $i++)
-           $token .= $characters[mt_rand(0, 61)];
-         User::insertToken($result['UserID'], $token);
+         for ($i = 0; $i < 20; $i++) {
+           $token .= $characters[mt_rand(0, strlen($characters) - 1)];
+         }
+         User::insertToken($result['userID'], $token);
          $errorCode = 1;
-         $message = array($result['firstName'],$result['lastName'],$result['middleInitial'],$token, $result['userID']);
+         $message = array($result['email'], $result['firstName'],$result['lastName'], array($result['red'], $result['green'], $result['blue']), $token, $result['userID']);
        }
        else {
          $errorCode = 5;
-         $message = "Your email and/or password were incorrect. Please try again."
+         $message = "Your email and/or password were incorrect. Please try again.";
        }
+
      }
+
    }
    catch(PDOException $e) {
         $errorCode  = $e->getCode();
@@ -87,11 +90,11 @@ Class User {
  }
 
 ///////////////////////////////////////////////////////////////////////// INSERT TOKEN
-  function insertToken($userID, $token) {
+  static function insertToken($userID, $token) {
     $errorCode;
     $message;
     $db = Db::getInstance();
-    $sql = 'UPDATE user SET token = ? WHERE email = ?';
+    $sql = 'UPDATE user SET token = ? WHERE userID = ?';
     try {
       $stmt = $db->prepare($sql);
       $data = array($token, $userID);
