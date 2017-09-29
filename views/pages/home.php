@@ -4,6 +4,5 @@
   <?php echo $_SESSION["firstName"]; ?></p>
 <p>Last Name:<br>
   <?php echo $_SESSION["lastName"]; ?></p>
-<?php echo $_SESSION['message']; ?>
 
 <p>You successfully landed on the home page. Congrats!</p>
