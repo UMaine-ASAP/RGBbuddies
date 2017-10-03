@@ -44,7 +44,7 @@ class UserController {
       $outcome = User::login($email, $password);
       if ($outcome[0] != 1) {
         $_SESSION['message'] = $outcome[1];
-        header('Location: index.php');
+        echo $_SESSION['message'];
       }
       else {
         $userData = $outcome[1];

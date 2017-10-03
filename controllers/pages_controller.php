@@ -1,7 +1,10 @@
 <?php
   class PagesController {
     public function home() {
-      require_once('views/pages/home.php');
+      if (isset($_SESSION['token']))
+        require_once('views/pages/profile.php');
+      else
+        require_once('views/pages/home.php');
     }
 
     public function error() {

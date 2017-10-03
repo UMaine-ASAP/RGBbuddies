@@ -52,8 +52,7 @@ Class User {
 
 ///////////////////////////////////////////////////////////////////////// LOGIN
  public static function login($email, $password) {
-   $errorCode;
-   $message;
+
    $userID = '';
    $db = Db::getInstance();
    $sql = "SELECT * FROM user WHERE email = ?";
@@ -78,7 +77,10 @@ Class User {
          $errorCode = 5;
          $message = "Your email and/or password were incorrect. Please try again.";
        }
-
+     }
+     else {
+       $errorCode = 5;
+       $message = "Your email and/or password were incorrect. Please try again.";
      }
 
    }
