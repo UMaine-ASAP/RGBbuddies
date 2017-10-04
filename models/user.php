@@ -91,6 +91,16 @@ Class User {
    return array($errorCode, $message);
  }
 
+///////////////////////////////////////////////////////////////////////// LOGOUT
+  static function logout($token) {
+    $db = Db::getInstance();
+    $sql = "UPDATE user SET token = '' WHERE token = ?";
+    $req = $db->prepare($sql);
+    $data = array($token);
+    $req->execute($data);
+    return array(1, "Successful Logoff");
+  }
+
 ///////////////////////////////////////////////////////////////////////// INSERT TOKEN
   static function insertToken($userID, $token) {
     $errorCode;

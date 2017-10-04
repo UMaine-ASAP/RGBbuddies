@@ -37,6 +37,9 @@ class UserController {
   function login() {
     require_once('views/user/userLogin.php');
 
+    if(isset($_SESSION['token']))
+      User::logout($_SESSION['token']);
+
     if (isset($_POST['email'])) {
       $email = $this->clean($_POST['email']);
       $password = $this->clean($_POST['password']);
@@ -57,6 +60,20 @@ class UserController {
 
       }
     }
+  }
+
+///////////////////////////////////////////////////////////////////////// LOGOUT
+  function logout() {
+    if(isset($_SESSION['token']))
+      User::logout($_SESSION['token']);
+    session_unset();
+    header('Location: index.php');
+  }
+
+///////////////////////////////////////////////////////////////////////// LIST USERS
+  function list() {
+    $users = User::all()[1];
+    require_once('views/user/userList.php');
   }
 
 ///////////////////////////////////////////////////////////////////////// CONVERT COLOR HEX TO RGB

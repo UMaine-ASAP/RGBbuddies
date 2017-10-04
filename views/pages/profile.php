@@ -4,3 +4,5 @@
   <?php echo $_SESSION["firstName"]; ?></p>
 <p>Last Name:<br>
   <?php echo $_SESSION["lastName"]; ?></p>
+
+<?php require_once('?controller=user&action=list');?>
